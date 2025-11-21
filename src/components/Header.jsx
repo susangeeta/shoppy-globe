@@ -9,7 +9,7 @@ import { logo1 } from "../assets";
 
 const Header = () => {
   return (
-    <div className="px-6  border border-b-gray-300 h-18 flex justify-between w-full">
+    <div className=" main- border border-b-gray-300 h-18 main-container  flex justify-between w-full">
       <section className="flex gap-5 items-center h-full">
         <div className="flex items-center gap-2">
           <img
