@@ -3,12 +3,14 @@ import { IoBagCheckOutline } from "react-icons/io5";
 import {
   MdFavoriteBorder,
   MdOutlineProductionQuantityLimits,
-  MdShoppingCart,
 } from "react-icons/md";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logo1 } from "../assets";
 
 const Header = () => {
+  const cartItems = useSelector((state) => state.cart || []);
+  console.log(cartItems);
   return (
     <div className=" main- border border-b-gray-300 h-18 main-container  flex justify-between w-full">
       <section className="flex gap-5 items-center h-full">
@@ -42,27 +44,18 @@ const Header = () => {
         </div>
       </section>
       <section className="flex gap-3 items-center justify-center">
-        <div className="flex gap-2  items-center">
-          <div className="relative">
-            <div className="rounded-full text-sm bg-[#34ac75] flex items-center justify-center absolute -top-3 -right-2 text-white h-4 w-4">
-              0
+        <Link to={`/cart`}>
+          {" "}
+          <div className="flex gap-1 items-center justify-center cursor-pointer">
+            <div className="relative">
+              <div className="rounded-full text-sm bg-[#34ac75] flex items-center justify-center absolute -top-3 -right-2 text-white h-4 w-4">
+                {cartItems.length}
+              </div>
+              <MdFavoriteBorder className="h-6 w-6 cursor-pointer" />
             </div>
-            <MdShoppingCart className="h-6 w-6 cursor-pointer " />
+            <h1 className="text-xs text-gray-500 pt-2 cursor-pointer">Cart</h1>
           </div>
-          <h1 className="text-xs text-gray-500 pt-2 cursor-pointer">
-            Wishlist
-          </h1>
-        </div>
-
-        <div className="flex gap-1 items-center justify-center cursor-pointer">
-          <div className="relative">
-            <div className="rounded-full text-sm bg-[#34ac75] flex items-center justify-center absolute -top-3 -right-2 text-white h-4 w-4">
-              0
-            </div>
-            <MdFavoriteBorder className="h-6 w-6 cursor-pointer" />
-          </div>
-          <h1 className="text-xs text-gray-500 pt-2 cursor-pointer">Cart</h1>
-        </div>
+        </Link>
 
         <input
           type="text"

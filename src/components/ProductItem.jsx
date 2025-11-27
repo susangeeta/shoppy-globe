@@ -1,19 +1,33 @@
 import { CiStar } from "react-icons/ci";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../redux/cartSlice";
 
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart);
+  const isAdded = cartItems.some((item) => item.id === product.id);
+
+  const handelCartItem = () => {
+    if (!isAdded) {
+      dispatch(addToCart(product));
+    }
+  };
   return (
     <div className="border border-gray-300 overflow-hidden rounded-xl">
       <div className="relative">
         <img src={product.images} className="h-full w-full " />
         <button
-          onClick={() => dispatch(addToCart(product))}
-          className="absolute top-3 right-3 cursor-pointer bg-green-800 text-white px-2 py-1 rounded-md hover:bg-white hover:border border-green-800 hover:text-green-800 text-sm "
+          onClick={handelCartItem}
+          disabled={isAdded}
+          className={`absolute top-3 right-3 cursor-pointer px-2 py-1 rounded-md text-sm 
+            ${
+              isAdded
+                ? "bg-gray-400 text-white cursor-not-allowed"
+                : "bg-green-800 text-white hover:bg-white hover:border hover:border-green-800 hover:text-green-800"
+            }`}
         >
-          Add Cart
+          {isAdded ? "Added" : "Add Cart"}
         </button>
       </div>
       <div className="border-t border-gray-300   p-4">
