@@ -5,6 +5,7 @@ import {
   MdOutlineProductionQuantityLimits,
   MdShoppingCart,
 } from "react-icons/md";
+import { Link } from "react-router-dom";
 import { logo1 } from "../assets";
 
 const Header = () => {
@@ -18,14 +19,22 @@ const Header = () => {
           />
         </div>
         <div className="flex gap-8 cursor-pointer font-semibold text-sm">
-          <div className="flex gap-1 items-center">
-            <CiHome className="text-[#34ad78]" />
-            <h1 className="text-[#34ad78]">Home</h1>
-          </div>
-          <div className="flex gap-1 items-center">
-            <MdOutlineProductionQuantityLimits className="text-[#34ad78]" />
-            <h1 className="text-[#34ad78]">Product</h1>
-          </div>
+          <Link to={"/"}>
+            {" "}
+            <div className="flex gap-1 items-center">
+              <CiHome className="text-[#34ad78]" />
+              <h1 className="text-[#34ad78]">Home</h1>
+            </div>
+          </Link>
+
+          <Link to={"/product"}>
+            {" "}
+            <div className="flex gap-1 items-center">
+              <MdOutlineProductionQuantityLimits className="text-[#34ad78]" />
+              <h1 className="text-[#34ad78]">Product</h1>
+            </div>
+          </Link>
+
           <div className="flex items-center gap-1">
             <IoBagCheckOutline className="text-[#34ad78]" />
             <h1 className="text-[#34ad78]">CheckOut</h1>
