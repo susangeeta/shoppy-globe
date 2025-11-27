@@ -37,10 +37,12 @@ const Header = () => {
             </div>
           </Link>
 
-          <div className="flex items-center gap-1">
-            <IoBagCheckOutline className="text-[#34ad78]" />
-            <h1 className="text-[#34ad78]">CheckOut</h1>
-          </div>
+          <Link to={`/checkout`}>
+            <div className="flex items-center gap-1">
+              <IoBagCheckOutline className="text-[#34ad78]" />
+              <h1 className="text-[#34ad78]">CheckOut</h1>
+            </div>
+          </Link>
         </div>
       </section>
       <section className="flex gap-3 items-center justify-center">

@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import Cart from "./components/Cart.jsx";
 import ProductDetails from "./components/ProductDetails.jsx";
 import "./index.css";
+import Checkout from "./pages/Checkout.jsx";
 import Home from "./pages/Home.jsx";
 import Product from "./pages/product.jsx";
 const appRouter = createBrowserRouter([
@@ -26,6 +27,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
     ],
   },
