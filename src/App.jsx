@@ -1,4 +1,3 @@
-import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 import { Outlet } from "react-router-dom";
 import "./App.css";
@@ -11,7 +10,6 @@ function App() {
     <Provider store={store}>
       <Header />
       <Outlet />
-      <Toaster position="top-center" />
       <Footer />
     </Provider>
   );
