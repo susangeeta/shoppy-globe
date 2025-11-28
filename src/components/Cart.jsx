@@ -55,9 +55,11 @@ const Cart = () => {
               >
                 Clear Cart
               </button>
-              <button className="bg-green-800 w-52 py-2 cursor-pointer rounded-md text-white">
-                Buy Now
-              </button>
+              <Link to={`/checkout`}>
+                <button className="bg-green-800 w-52 py-2 cursor-pointer rounded-md text-white">
+                  Buy Now
+                </button>
+              </Link>
             </div>
           </div>
         </section>
