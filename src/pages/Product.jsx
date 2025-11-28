@@ -36,7 +36,7 @@ const Product = () => {
     );
   }
   return (
-    <section className="main-container flex flex-col gap-12 py-8 md:py-12">
+    <section className="main-container flex flex-col gap-12 pt-24">
       <div className="flex md:flex-row flex-col gap-5">
         <input
           type="text"
@@ -47,7 +47,7 @@ const Product = () => {
         />
         <div className="flex flex-col gap-2">
           <select
-            className="border p-2"
+            className="border p-2 rounded-md"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >

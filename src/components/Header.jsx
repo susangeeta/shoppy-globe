@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CiHome } from "react-icons/ci";
+import { CiHome, CiShoppingCart } from "react-icons/ci";
 import { HiMenu, HiX } from "react-icons/hi";
 import { IoBagCheckOutline } from "react-icons/io5";
 import {
@@ -7,16 +7,20 @@ import {
   MdOutlineProductionQuantityLimits,
 } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const cartItems = useSelector((state) => state.cart || []);
   const [openMenu, setOpenMenu] = useState(false);
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path;
   return (
-    <div className=" main- border border-b-gray-300 h-18 main-container  flex justify-between w-full">
-      <div className="flex items-center gap-2">
-        <h1 className="text-green-800 text-xl font-bold">Shoppy Globe</h1>
-      </div>
+    <div className="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-300 h-16 flex items-center justify-between px-4">
+      <Link to={"/"}>
+        <div className="flex items-center gap-2">
+          <h1 className="text-green-800 text-xl font-bold">Shoppy Globe</h1>
+        </div>
+      </Link>
 
       <div className="flex md:hidden items-center gap-4">
         <Link to={"/cart"}>
@@ -65,37 +69,59 @@ const Header = () => {
 
       <div className=" hidden md:flex gap-5 items-center cursor-pointer font-semibold text-sm">
         <Link to={"/"}>
-          {" "}
-          <div className="flex gap-1 items-center">
-            <CiHome className="text-[#34ad78]" />
-            <h1 className="text-[#34ad78]">Home</h1>
+          <div
+            className={`flex gap-1 items-center ${
+              isActive("/") ? "text-green-600 font-bold" : "text-[#34ad78]"
+            }`}
+          >
+            <CiHome
+              className={isActive("/") ? "text-green-600" : "text-[#34ad78]"}
+            />
+            <h1>Home</h1>
           </div>
         </Link>
 
         <Link to={"/product"}>
-          {" "}
-          <div className="flex gap-1 items-center">
-            <MdOutlineProductionQuantityLimits className="text-[#34ad78]" />
-            <h1 className="text-[#34ad78]">Product</h1>
+          <div
+            className={`flex gap-1 items-center ${
+              isActive("/product")
+                ? "text-green-600 font-bold"
+                : "text-[#34ad78]"
+            }`}
+          >
+            <MdOutlineProductionQuantityLimits
+              className={
+                isActive("/product") ? "text-green-600" : "text-[#34ad78]"
+              }
+            />
+            <h1>Product</h1>
           </div>
         </Link>
 
         <Link to={`/checkout`}>
-          <div className="flex items-center gap-1">
-            <IoBagCheckOutline className="text-[#34ad78]" />
-            <h1 className="text-[#34ad78]">CheckOut</h1>
+          <div
+            className={`flex items-center gap-1 ${
+              isActive("/checkout")
+                ? "text-green-600 font-bold"
+                : "text-[#34ad78]"
+            }`}
+          >
+            <IoBagCheckOutline
+              className={
+                isActive("/checkout") ? "text-green-600" : "text-[#34ad78]"
+              }
+            />
+            <h1>Checkout</h1>
           </div>
         </Link>
         <Link to={`/cart`}>
-          {" "}
           <div className="flex gap-1 items-center justify-center cursor-pointer">
             <div className="relative">
-              <div className="rounded-full text-sm bg-[#34ac75] flex items-center justify-center absolute -top-3 -right-2 text-white h-4 w-4">
+              <div className="rounded-full text-xs bg-[#34ac75] flex items-center justify-center absolute -top-3 -right-2 text-white h-5 w-5">
                 {cartItems.length}
               </div>
-              <MdFavoriteBorder className="h-6 w-6 cursor-pointer" />
+              <CiShoppingCart className="h-6 w-6 cursor-pointer" />
             </div>
-            <h1 className="text-xs text-gray-500 pt-2 cursor-pointer">Cart</h1>
           </div>
         </Link>
       </div>

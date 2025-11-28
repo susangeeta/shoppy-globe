@@ -11,7 +11,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="main-container py-8 md:py-12">
+    <div className="main-container pt-24">
       {cart.length === 0 ? (
         <div className="flex justify-center flex-col h-82 gap-3 items-center">
           <h1 className="text-black font-bold text-3xl ">
@@ -26,7 +26,7 @@ const Cart = () => {
           </Link>
         </div>
       ) : (
-        <section className="flex md:flex-row flex-col w-full gap-17">
+        <section className="flex md:flex-row flex-col w-full gap-12  md:gap-17">
           <div className=" w-full md:w-[70%]">
             {cart.map((item) => (
               <CartItem key={item.id} item={item} />
