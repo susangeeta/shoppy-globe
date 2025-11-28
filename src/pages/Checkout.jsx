@@ -73,16 +73,16 @@ const Checkout = () => {
   }
 
   return (
-    <div className="main-container py-12">
-      <section className="flex w-full  gap-10">
+    <div className="main-container py-8  md:py-12">
+      <section className="flex md:flex-row flex-col w-full  gap-10">
         <form
           onSubmit={handleOrderPlaced}
-          className="w-[60%] shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-4 flex flex-col gap-5"
+          className=" w-full md:w-[60%] shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-4 flex flex-col gap-5"
         >
           <h1 className="text-gray-500  text-base font-bold">
             Billing Information
           </h1>
-          <div className=" grid grid-cols-2 gap-3">
+          <div className=" grid  grid-cols-1 md:grid-cols-2 gap-3">
             {" "}
             <div className="flex flex-col gap-2">
               <h1>Name</h1>
@@ -177,7 +177,7 @@ const Checkout = () => {
             Place Order
           </button>
         </form>
-        <div className="w-[40%] h-fit py-4  bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] ">
+        <div className=" w-full md:w-[40%] h-fit py-4  bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] ">
           <h1 className="uppercase text-gray-400 font-semibold border-b border-b-gray-300 px-4 py-2">
             Order Summery
           </h1>

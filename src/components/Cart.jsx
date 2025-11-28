@@ -1,7 +1,7 @@
-import CartItem from "./CartItem";
-import { useSelector, useDispatch } from "react-redux";
-import { emptyCart } from "../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { emptyCart } from "../redux/cartSlice";
+import CartItem from "./CartItem";
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="main-container py-12">
+    <div className="main-container py-8 md:py-12">
       {cart.length === 0 ? (
         <div className="flex justify-center flex-col h-82 gap-3 items-center">
           <h1 className="text-black font-bold text-3xl ">
@@ -26,13 +26,13 @@ const Cart = () => {
           </Link>
         </div>
       ) : (
-        <section className="flex w-full gap-17">
-          <div className="w-[70%]">
+        <section className="flex md:flex-row flex-col w-full gap-17">
+          <div className=" w-full md:w-[70%]">
             {cart.map((item) => (
               <CartItem key={item.id} item={item} />
             ))}
           </div>
-          <div className="w-[30%] h-fit py-4  bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] ">
+          <div className="w-full md:w-[30%] h-fit py-4  bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] ">
             <h1 className="uppercase text-gray-400 font-semibold border-b border-b-gray-300 px-4 py-2">
               Price details
             </h1>

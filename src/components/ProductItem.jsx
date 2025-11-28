@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../redux/cartSlice";
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, loading }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
   const isAdded = cartItems.some((item) => item.id === product.id);
@@ -13,10 +13,27 @@ const ProductItem = ({ product }) => {
       dispatch(addToCart(product));
     }
   };
+  if (loading) {
+    return (
+      <div className="border border-gray-300 overflow-hidden rounded-xl animate-pulse">
+        <div className="h-48 bg-gray-300 w-full"></div>
+
+        <div className="p-4 space-y-3">
+          <div className="h-3 bg-gray-300 w-20 rounded"></div>
+          <div className="h-4 bg-gray-300 w-32 rounded"></div>
+          <div className="flex gap-2">
+            <div className="h-3 bg-gray-300 w-16 rounded"></div>
+            <div className="h-3 bg-gray-300 w-12 rounded"></div>
+          </div>
+          <div className="h-8 bg-gray-300 w-full rounded"></div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="border border-gray-300 overflow-hidden rounded-xl">
       <div className="relative">
-        <img src={product.images} className="h-full w-full " />
+        <img src={product.images?.[0]} className="h-full w-full " />
         <button
           onClick={handelCartItem}
           disabled={isAdded}
@@ -31,14 +48,16 @@ const ProductItem = ({ product }) => {
         </button>
       </div>
       <div className="border-t border-gray-300   p-4">
-        <h3 className="text-xs text-[#848484]">{product?.brand}</h3>
-        <div className="flex justify-between w-full">
-          <h1 className="text-black font-semibold">{product?.title}</h1>
-          <div className="flex gap-1 items-center bg-red-600 px-3 rounded-md py-1 text-xs text-white">
-            <CiStar className="text-base" />
-            <h2 className="pt-1">{product?.rating}</h2>
+        <div className="flex gap-3 items-center">
+          <h3 className="text-xs text-[#848484]">{product?.brand}</h3>
+          <div className="flex gap-1 items-center bg-red-600 px-2 md:px-2 rounded-md py-1  text-white">
+            <CiStar className="text-xs" />
+            <h2 className="text-xs">{product?.rating}</h2>
           </div>
         </div>
+        <h1 className="text-black text-sm lg:text-base font-semibold">
+          {product?.title}
+        </h1>
         <div className="flex items-center  gap-1 ">
           <p className="text-sm text-gray-400 line-through">
             {" "}

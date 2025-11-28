@@ -21,8 +21,8 @@ const ProductDetails = () => {
   }, [id]);
   if (!product) return <p>Loading…</p>;
   return (
-    <section className=" flex gap-10 justify-center items-center h-[80vh] px-8 py-10 rounded-lg w-full ">
-      <div className="flex relative  justify-center items-center w-[30%]  bg-white rounded-2xl shadow-lg border border-gray-100 p-4 ">
+    <section className=" flex md:flex-row flex-col gap-10 justify-center items-center md:h-[80vh] px-8 py-8 md:py-10 rounded-lg w-full ">
+      <div className="flex relative  justify-center items-center w-full  md:w-[30%]  bg-white rounded-2xl shadow-lg border border-gray-100 p-4 ">
         <img
           src={product.images}
           className="h-[300px] w-[300px] object-contain rounded-t-xl"
@@ -34,7 +34,7 @@ const ProductDetails = () => {
           Add Cart
         </button>
       </div>
-      <div className="w-[70%] flex items-start flex-col">
+      <div className="w-full md:w-[70%] flex items-start flex-col">
         {" "}
         <div className="flex gap-1  items-center justify-center bg-red-600 px-1 w-20 rounded-md py-1 text-xs text-white">
           <CiStar className="text-base" />

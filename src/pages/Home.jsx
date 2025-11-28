@@ -15,7 +15,7 @@ const Home = () => {
         <div className="flex items-center justify-center py-12">
           <button
             onClick={() => navigate("/product")}
-            className="bg-blue-600 text-white px-6 py-2 cursor-pointer rounded-lg"
+            className="bg-green-800 text-white px-6 py-2 cursor-pointer rounded-lg"
           >
             View More
           </button>

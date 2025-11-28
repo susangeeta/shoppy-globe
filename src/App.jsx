@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 import { Outlet } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { store } from "./redux/Store";
 
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <Outlet />
       <Toaster position="top-center" />
+      <Footer />
     </Provider>
   );
 }
