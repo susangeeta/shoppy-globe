@@ -43,7 +43,7 @@ const Product = () => {
           value={localSearch}
           onChange={(e) => setLocalSearch(e.target.value)}
           className="border p-2 w-full  md:w-96 rounded-md focus:outline-none"
-          placeholder="Search the item....."
+          placeholder="Search the Product....."
         />
         <div className="flex flex-col gap-2">
           <select
@@ -59,6 +59,7 @@ const Product = () => {
           </select>
         </div>
       </div>
+
       {filteredProducts.length === 0 ? (
         <p className="text-center text-gray-500 mt-10 text-lg">
           No products found.

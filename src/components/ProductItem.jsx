@@ -2,12 +2,12 @@ import { CiStar } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../redux/cartSlice";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const ProductItem = ({ product, loading }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
-
-  // Check if product exists before checking cart
   const isAdded = product
     ? cartItems.some((item) => item.id === product.id)
     : false;
@@ -17,8 +17,6 @@ const ProductItem = ({ product, loading }) => {
       dispatch(addToCart(product));
     }
   };
-
-  // Show loading skeleton if loading or product is undefined
   if (loading || !product) {
     return (
       <div className="border border-gray-300 overflow-hidden rounded-xl animate-pulse">
@@ -37,17 +35,25 @@ const ProductItem = ({ product, loading }) => {
   }
 
   return (
-    <div className="border border-gray-300 overflow-hidden rounded-xl">
+    <motion.div
+      viewport={{ once: true }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.05 }} // zoom in on hover
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="border border-gray-300 rounded-xl"
+    >
       <div className="relative">
         <img
-          src={product.images?.[0]}
+          src={product?.images?.[0]}
           alt={product.title || "Product Image"}
           className="h-full w-full object-cover"
         />
         <button
           onClick={handleCartItem}
           disabled={isAdded}
-          className={`absolute top-3 right-3 px-2 py-1 rounded-md text-sm ${
+          className={`absolute top-3 right-3 px-2 py-1 cursor-pointer rounded-md text-sm ${
             isAdded
               ? "bg-gray-400 text-white cursor-not-allowed"
               : "bg-green-800 text-white hover:bg-white hover:border hover:border-green-800 hover:text-green-800"
@@ -56,7 +62,6 @@ const ProductItem = ({ product, loading }) => {
           {isAdded ? "Added" : "Add Cart"}
         </button>
       </div>
-
       <div className="border-t border-gray-300 p-4">
         <div className="flex gap-3 items-center">
           <h3 className="text-xs text-[#848484]">{product?.brand}</h3>
@@ -85,7 +90,7 @@ const ProductItem = ({ product, loading }) => {
           </div>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

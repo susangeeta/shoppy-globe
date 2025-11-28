@@ -15,7 +15,7 @@ const Header = () => {
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-300 h-16 flex items-center justify-between px-4">
+    <div className="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-300 h-16 flex items-center justify-between px-4 main-container">
       <Link to={"/"}>
         <div className="flex items-center gap-2">
           <h1 className="text-green-800 text-xl font-bold">Shoppy Globe</h1>
@@ -71,11 +71,11 @@ const Header = () => {
         <Link to={"/"}>
           <div
             className={`flex gap-1 items-center ${
-              isActive("/") ? "text-green-600 font-bold" : "text-[#34ad78]"
+              isActive("/") ? "text-blue-600 font-bold" : "text-[#34ad78]"
             }`}
           >
             <CiHome
-              className={isActive("/") ? "text-green-600" : "text-[#34ad78]"}
+              className={isActive("/") ? "text-blue-600" : "text-[#34ad78]"}
             />
             <h1>Home</h1>
           </div>
@@ -85,13 +85,13 @@ const Header = () => {
           <div
             className={`flex gap-1 items-center ${
               isActive("/product")
-                ? "text-green-600 font-bold"
+                ? "text-blue-600 font-bold"
                 : "text-[#34ad78]"
             }`}
           >
             <MdOutlineProductionQuantityLimits
               className={
-                isActive("/product") ? "text-green-600" : "text-[#34ad78]"
+                isActive("/product") ? "text-blue-600" : "text-[#34ad78]"
               }
             />
             <h1>Product</h1>
@@ -102,13 +102,13 @@ const Header = () => {
           <div
             className={`flex items-center gap-1 ${
               isActive("/checkout")
-                ? "text-green-600 font-bold"
+                ? "text-blue-600 font-bold"
                 : "text-[#34ad78]"
             }`}
           >
             <IoBagCheckOutline
               className={
-                isActive("/checkout") ? "text-green-600" : "text-[#34ad78]"
+                isActive("/checkout") ? "text-blue-600" : "text-[#34ad78]"
               }
             />
             <h1>Checkout</h1>

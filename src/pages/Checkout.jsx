@@ -73,7 +73,7 @@ const Checkout = () => {
   }
 
   return (
-    <div className="main-container md:pt-24 pt-24">
+    <div className="main-container md:pt-28 pt-24">
       <section className="flex md:flex-row flex-col w-full  gap-10">
         <form
           onSubmit={handleOrderPlaced}
