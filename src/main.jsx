@@ -8,8 +8,9 @@ import NotFound from "./components/NotFound.jsx";
 import "./index.css";
 import Checkout from "./pages/Checkout.jsx";
 import Home from "./pages/Home.jsx";
-import Product from "./pages/product.jsx";
+import Product from "./pages/Product.jsx";
 const ProductDetail = lazy(() => import("./components/ProductDetails"));
+
 const appRouter = createBrowserRouter([
   {
     path: "",
