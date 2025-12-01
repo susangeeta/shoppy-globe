@@ -3,8 +3,7 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import { store } from "./redux/Store";
-
+import store from "./redux/store";
 function App() {
   return (
     <Provider store={store}>
